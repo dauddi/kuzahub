@@ -1,6 +1,13 @@
+import Link from "next/link"
+
 const News = () => {
     return (
-        <p>News Homepage</p>
+        <>
+            <h1>News Homepage</h1>
+            <Link passHref href="/">
+                    &larr; Go back to Homepage
+            </Link>
+        </>
     )
 }
 
