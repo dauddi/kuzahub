@@ -21,7 +21,7 @@ export default function Home() {
 				<div className={styles.grid}>
 					<a href="#" className={styles.card}>
 						<Image
-							src="/images/market.jpg"
+							src="/images/market-min.jpg"
 							width="250"
 							height="160"
 							layout="responsive"
@@ -36,7 +36,7 @@ export default function Home() {
 
 					<a href="#" className={styles.card}>
 						<Image
-							src="/images/invest.jpg"
+							src="/images/invest-min.jpg"
 							width="250"
 							height="160"
 							layout="responsive"
@@ -49,7 +49,7 @@ export default function Home() {
 
 					<a href="#" className={styles.card}>
 						<Image
-							src="/images/logistics.jpg"
+							src="/images/logistics-min.jpg"
 							width="250"
 							height="160"
 							layout="responsive"
@@ -62,7 +62,7 @@ export default function Home() {
 
 					<a href="#" className={styles.card}>
 						<Image
-							src="/images/news.jpg"
+							src="/images/news-min.jpg"
 							width="250"
 							height="160"
 							layout="responsive"
