@@ -1,5 +1,5 @@
-import connect from "../../lib/database";
-import User from "../../lib/models/user";
+import connect from "../../utils/database";
+import User from "../../models/user";
 
 connect();
 
