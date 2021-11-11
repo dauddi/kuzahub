@@ -1,0 +1,106 @@
+[
+    {
+        "id": "123456",
+        "title": "Gaming Consoles Supply",
+        "desc": "We sell gaming consoles and accessories. We also offer importation services for special devices not available locally.",
+        "location": "Nairobi",
+        "creationDate": "1636474705830",
+        "creator": {
+            "id": "485463",
+            "name": "Alysha Michel",
+            "isVerified": true,
+            "phone": "555653566",
+            "avatar": "https://avatars.githubusercontent.com/u/15913767?v=4"
+        },
+        "ratings": [
+            {
+                "name": "Johnny Juma",
+                "rating": "5",
+                "review": "Great customer service"
+            },
+            {
+                "name": "Aisha Wale",
+                "rating": "4",
+                "review": "Timely delivery"
+            }
+        ]
+    },
+    {
+        "id": "123456",
+        "title": "Gaming Consoles Supply",
+        "desc": "We sell gaming consoles and accessories. We also offer importation services for special devices not available locally.",
+        "location": "Nairobi",
+        "creationDate": "1634474705830",
+        "creator": {
+            "id": "485463",
+            "name": "Alysha Wanga",
+            "isVerified": false,
+            "phone": "555653566",
+            "avatar": "https://avatars.githubusercontent.com/u/1179960?v=4"
+        },
+        "ratings": [
+            {
+                "name": "Johnny Juma",
+                "rating": "5",
+                "review": "Great customer service"
+            },
+            {
+                "name": "Aisha Wale",
+                "rating": "4",
+                "review": "Timely delivery"
+            }
+        ]
+    },
+    {
+        "id": "123456",
+        "title": "Gaming Consoles Supply",
+        "desc": "We sell gaming consoles and accessories. We also offer importation services for special devices not available locally.",
+        "location": "Nairobi",
+        "creationDate": "1626574705830",
+        "creator": {
+            "id": "485463",
+            "name": "Alysha Wanga",
+            "isVerified": false,
+            "phone": "555653566",
+            "avatar": "https://avatars.githubusercontent.com/u/26605804?v=4"
+        },
+        "ratings": [
+            {
+                "name": "Johnny Juma",
+                "rating": "5",
+                "review": "Great customer service"
+            },
+            {
+                "name": "Aisha Wale",
+                "rating": "4",
+                "review": "Timely delivery"
+            }
+        ]
+    },
+    {
+        "id": "123456",
+        "title": "Gaming Consoles Supply",
+        "desc": "We sell gaming consoles and accessories. We also offer importation services for special devices not available locally.",
+        "location": "Nairobi",
+        "creationDate": "1636579666172",
+        "creator": {
+            "id": "485463",
+            "name": "Alysha Wanga",
+            "isVerified": true,
+            "phone": "555653566",
+            "avatar": "https://avatars.githubusercontent.com/u/3046889?v=4"
+        },
+        "ratings": [
+            {
+                "name": "Johnny Juma",
+                "rating": "5",
+                "review": "Great customer service"
+            },
+            {
+                "name": "Aisha Wale",
+                "rating": "4",
+                "review": "Timely delivery"
+            }
+        ]
+    }
+]
