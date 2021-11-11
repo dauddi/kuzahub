@@ -1,24 +1,25 @@
 import connect from "../../utils/database";
 import User from "../../models/user";
+import md5 from "md5";
 
 connect();
 
 const handler = async (req, res) => {
-	const { username: un, password } = req.body;
-
-	const user = await User.find({ username: un });
+	const { username: user_name, password } = JSON.parse(req.body);
 
 	switch (req.method) {
 		case "POST": {
-			//demo auth for development
-			if (user.length !== 0) {
-				res.send(`Welcome Back ${un}`);
-			} else {
-				res.send(`User ${un} does not exist`);
-			}
+			User.findOne({ username: user_name }, (err, foundUser) => {
+				if (!foundUser || foundUser.password !== md5(password)) {
+					return res.status(401).send({ error: "Invalid username/password" });
+				} else {
+					return res.redirect(307, "../ap/services");
+				}
+			});
+			break;
 		}
 		default:
-			res.send("Invalid Request!!");
+			return res.status(400).send({ error: "Invalid request" });
 	}
 };
 
