@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './styles.module.css'
-import ImgAvatar from '../common/ImgAvatar'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
