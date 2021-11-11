@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Copyright from '../../components/common/Copyright'
+import Copyright from '../../src/components/common/Copyright'
 
 const theme = createTheme();
 
@@ -20,10 +20,15 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+
+    data && fetch("/api/login", {
+      method: "POST", 
+      body: JSON.stringify({
+        username: data.get('username'),
+        password: data.get('password'),
+      }),
+    }).then(res => {
+      console.log("Request complete! response:", res);
     });
   };
 
@@ -52,7 +57,7 @@ const Login = () => {
               fullWidth
               id="email"
               label="Email Address"
-              name="email"
+              name="username"
               autoComplete="email"
               autoFocus
             />
