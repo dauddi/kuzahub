@@ -5,7 +5,6 @@ import Layout from '../src/components/layout'
 import Head from "next/head";
 import Banner from "../src/components/homepage/Banner"
 import PreviewListings from "../src/components/homepage/PreviewListings";
-import ListingCard from "../src/components/common/ListingCard"
 
 const Homepage = () => {
 	return (
@@ -23,10 +22,6 @@ const Homepage = () => {
                 <main className={styles.main}>
                     <section className={styles.preview} >
                         <PreviewListings />
-                    </section>
-
-                    <section>
-                        <ListingCard />
                     </section>
                 </main>
                 
