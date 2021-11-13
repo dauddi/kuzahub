@@ -1,11 +1,23 @@
 import React from 'react'
 import styles from './banner.module.css'
 import Image from 'next/image'
-import Link from 'next/link'
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import Divider from '@mui/material/Divider';
+import ButtonPrimary from '../common/ButtonPrimary';
+import {useSelector} from 'react-redux'
+import Router from 'next/router'
 
 const Banner = () => {
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
+
+    const handleCreateListing = () => {
+        if (isAuthenticated) {
+            Router.push('/ap/NewListing')
+        } else {
+            Router.push('/nu/register')
+        }
+    }
+
     return (
         <div className={styles.banner}>
             <div className={styles.banner_text}>
@@ -14,9 +26,7 @@ const Banner = () => {
                 <h5> Increase Revenue | Build Networks | No Extra Cost </h5>
 
                 <div className={styles.cta} >
-                    <Link href="/nu/register">
-                        <a className={styles.button}>Create a Listing</a>
-                    </Link>
+                    <ButtonPrimary clickHandler={handleCreateListing} title="Create a Listing" />
 
                     <Divider variant="middle" orientation="vertical" />
 
@@ -25,7 +35,6 @@ const Banner = () => {
                         <span> <PlayCircleOutlineIcon fontSize="large" color="primary" /> </span>
                     </div>
                 </div>
-                
             </div>
             <div className={styles.banner_img}>
                 <Image src="/images/banner.jpg" width={400} height={303} alt="banner"/>
