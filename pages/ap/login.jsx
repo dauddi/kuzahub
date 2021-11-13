@@ -13,10 +13,16 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Copyright from '../../src/components/common/Copyright'
+import Router from 'next/router'
+
+import { authenticate } from '../../src/features/Auth/authSlice'
+import { useDispatch } from 'react-redux'
 
 const theme = createTheme();
 
 const Login = () => {
+  const dispatch = useDispatch()
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -28,12 +34,15 @@ const Login = () => {
         password: data.get('password'),
       }),
     }).then(res => {
-      console.log("Request complete! response:", res);
+      if (res.status === 200) {
+        dispatch(authenticate())
+        Router.push('/');
+      }
     });
   };
 
   return (
-    <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
