@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './banner.module.css'
+import styles from './banner.module.scss'
 import Image from 'next/image'
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import Divider from '@mui/material/Divider';
@@ -30,7 +30,7 @@ const Banner = () => {
 
                     <Divider variant="middle" orientation="vertical" />
 
-                    <div className={styles.mini_cta}>
+                    <div className={styles.cta_video}>
                         <h6> How it Works </h6>
                         <span> <PlayCircleOutlineIcon fontSize="large" color="primary" /> </span>
                     </div>

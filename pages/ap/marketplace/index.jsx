@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./market.module.css"
+import styles from "./market.module.scss"
 import ListingList from "../../../src/components/marketplace/ListingList";
 import Sidebar from "../../../src/components/marketplace/Sidebar"
 import Layout from "../../../src/components/layout"

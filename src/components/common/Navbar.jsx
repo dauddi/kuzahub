@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './navbar.module.css'
+import styles from './navbar.module.scss'
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';

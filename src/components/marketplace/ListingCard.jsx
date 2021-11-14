@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './listingcard.module.css'
+import styles from './listingcard.module.scss'
 import Image from 'next/image'
 import Avatar from '@mui/material/Avatar';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -32,15 +32,13 @@ const ListingCard = ({listing}) => {
 
     return (
         <div className={styles.container} >
-             {/* <Image className={styles.card_img} src="/images/market-min.jpg" width={280} height={140} alt="card image" /> */}
-             <div className={styles.card_text}>
+            <div className={styles.card_text}>
+                <h3> {listing.title} </h3>
                  
-                 <h3> {listing.title} </h3>
-                 
-                 <div className={styles.card_small}>
+                <div className={styles.card_small}>
                     <small> {listing.location} </small>
                     <small> {`Posted: ${getTimeUpdate()}`} </small>
-                 </div>
+                </div>
                 
                 
                 <p>Hello, fam. We are a small catering company offering catering services for events.</p>
@@ -63,7 +61,7 @@ const ListingCard = ({listing}) => {
                     <small>({listing.ratings.length})</small>
 
                 </div>
-             </div>
+            </div>
              
              <Divider/>
 

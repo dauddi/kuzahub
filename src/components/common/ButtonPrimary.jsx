@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import styles from './btnprimary.module.css'
+import styles from './btnprimary.module.scss'
 
 const ButtonPrimary = (props) => {
     return (

@@ -1,0 +1,48 @@
+.container {
+	width: 100vw;
+	max-width: 1440px;
+	min-height: 80vh;
+	display: flex;
+	flex-direction: column;
+	margin-top: 4em;
+}
+
+.section {
+	width: 100%;
+	display: flex;
+	gap: 0.5em;
+	min-height: 89vh;
+}
+
+.aside {
+	padding: 0.5em;
+	flex: 1;
+	border-radius: 8px;
+	background-color: aliceblue;
+}
+
+.main {
+	flex: 4;
+	padding: 1em;
+	border-left: 1px solid lightgray;
+}
+
+@media (max-width: 585px) {
+	.main {
+		padding: 0;
+	}
+}
+
+@media (max-width: 585px) {
+	.aside {
+		display: none;
+	}
+}
+
+@media (min-width: 1440px) {
+	.container {
+		width: 1440px;
+		align-items: center;
+		justify-content: center;
+	}
+}

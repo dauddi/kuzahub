@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './homepage.module.css'
+import styles from './homepage.module.scss'
 import Link from "next/link"
 import Layout from '../src/components/layout'
 import Head from "next/head";

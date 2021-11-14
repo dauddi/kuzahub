@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "./styles.module.css"
+import styles from "./listinglist.module.scss"
 import listings from '../../../listings.json'
 import ListingCard from './ListingCard'
 
