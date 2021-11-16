@@ -1,11 +1,14 @@
 import "../styles/global.css";
-import { Provider } from "react-redux";
+import { Provider as ReduxProvider } from "react-redux";
 import store from "../src/store/store";
+import { Provider } from "next-auth/provider";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Provider store={store}>
-      <Component {...pageProps} />
+    <Provider>
+      <ReduxProvider store={store}>
+        <Component {...pageProps} />
+      </ReduxProvider>
     </Provider>
   );
 }
