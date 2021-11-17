@@ -5,6 +5,7 @@ import Avatar from '@mui/material/Avatar';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import StarIcon from '@mui/icons-material/Star';
 import { Divider } from '@mui/material';
+import Link from 'next/link';
 
 const ListingCard = ({listing}) => {
 
@@ -28,9 +29,8 @@ const ListingCard = ({listing}) => {
             }
     }
 
-    console.log(typeof listing);
-
     return (
+        <Link href={`/listings/listingID`} passHref>
         <div className={styles.container} >
             <div className={styles.card_text}>
                 <h3> {listing.title} </h3>
@@ -40,13 +40,14 @@ const ListingCard = ({listing}) => {
                     <small> {`Posted: ${getTimeUpdate()}`} </small>
                 </div>
                 
-                
                 <p>Hello, fam. We are a small catering company offering catering services for events.</p>
+
                 <div className={styles.card_user}>
                     <Avatar src="https://avatars.githubusercontent.com/u/15913767?v=4" fontSize='small' />
                     <p> {listing.creator.name} </p>
                     { listing.creator.isVerified &&  <CheckCircleIcon color="success" fontSize='small' />}
                 </div>
+
                 <div className={styles.card_user} >
                     <p>Ratings:</p>
 
@@ -66,6 +67,7 @@ const ListingCard = ({listing}) => {
              <Divider/>
 
         </div>
+        </Link>
     )
 }
 
