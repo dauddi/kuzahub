@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './navbar.module.scss'
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
@@ -15,19 +15,23 @@ import ButtonPrimary from './ButtonPrimary'
 import Badge from '@mui/material/Badge';
 import Router from 'next/router'
 
+import { useSession } from 'next-auth/react'
+
+import {signIn, signOut} from 'next-auth/react'
 
 
 function Navbar() {
-    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
-    const dispatch = useDispatch()
 
-    const handleCreateListing = () => {
-        if (isAuthenticated) {
-            Router.push('/ap/NewListing')
-        } else {
-            Router.push('/nu/register')
-        }
-    }
+    const {data: session, status} = useSession();
+    console.log(session, status)
+
+    // const handleCreateListing = () => {
+    //     if (isAuthenticated) {
+    //         Router.push('/ap/NewListing')
+    //     } else {
+    //         Router.push('/nu/register')
+    //     }
+    // }
     
     return (
         <div className={styles.header}>
@@ -43,7 +47,7 @@ function Navbar() {
                 </div>
             </div>
 
-            { isAuthenticated && <div className={styles.header__right}>
+            {(session && status === 'authenticated') && <div className={styles.header__right}>
                 <HomeIcon />
                 <Badge badgeContent={4} fontSize="small" color="warning" >
                     <ChatIcon />
@@ -58,11 +62,34 @@ function Navbar() {
                 </Badge>
             </div>}
 
-            {!isAuthenticated && <Link href="/ap/login" >
-                <a>Sign In</a>
+            {!(session && status === 'authenticated')  && <Link href="/api/auth/signin" >
+                <a onClick={e => {
+                    e.preventDefault();
+                    signIn();
+                }}>Sign In</a>
             </Link>}
 
-            <ButtonPrimary clickHandler={handleCreateListing} title="Create a Listing" />
+            {(session && status === 'authenticated') && <Link href="/api/auth/signin" >
+                <a onClick={e => {
+                    e.preventDefault();
+                    signOut();
+                }}>Sign Out</a>
+            </Link>}
+
+            {/* <ButtonPrimary clickHandler={handleCreateListing} title="Create a Listing" /> */}
+
+            <Link href="/api/auth/signup" >
+                <a onClick={e => {
+                    e.preventDefault();
+                    if (!(session && status === 'authenticated')) {
+                        signIn();
+                    }
+                    else{
+                        Router.push('/ap/NewListing')
+                    }
+                    
+                }} >Create Listing</a>
+            </Link>
 
         </div>
     )
