@@ -23,22 +23,24 @@ const theme = createTheme();
 const Login = () => {
   const dispatch = useDispatch()
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    data && fetch("/api/login", {
+    const res = await fetch("/api/login", {
       method: "POST", 
       body: JSON.stringify({
         username: data.get('username'),
         password: data.get('password'),
       }),
-    }).then(res => {
-      if (res.status === 200) {
-        dispatch(authenticate())
-        Router.push('/');
-      }
-    });
+    })
+    
+    if (res.status === 200) {
+      dispatch(authenticate())
+      Router.push('/');
+    } else {
+      Router.push('/ap/login')
+    }
   };
 
   return (
