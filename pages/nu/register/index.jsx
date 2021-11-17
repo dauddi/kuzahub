@@ -13,15 +13,16 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Copyright from '../../../src/components/common/Copyright'
+import Router from 'next/router'
 
 const theme = createTheme();
 
 const Register = () => {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    data && fetch("/api/register", {
+    const res = await fetch("/api/register", {
       method: "POST", 
       body: JSON.stringify({
         firstname: data.get('firstname'),
@@ -29,16 +30,13 @@ const Register = () => {
         username: data.get('username'),
         password: data.get('password'),
       }),
-    }).then(res => {
-      console.log("Request complete! response:", res);
-    });
+    })
     
-    console.log({
-      firstname: data.get('firstname'),
-      lastname: data.get('lastname'),
-      username: data.get('username'),
-      password: data.get('password'),
-    });
+    if (res.status === 200) {
+      Router.push('/ap/login')
+    } else {
+      Router.push('/nu/register')
+    }
   };
 
   return (
