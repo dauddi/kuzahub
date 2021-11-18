@@ -40,12 +40,12 @@ const ListingCard = ({listing}) => {
                     <small> {`Posted: ${getTimeUpdate()}`} </small>
                 </div>
                 
-                <p>Hello, fam. We are a small catering company offering catering services for events.</p>
+                <p>{listing.desc}</p>
 
                 <div className={styles.card_user}>
                     <Avatar src="https://avatars.githubusercontent.com/u/15913767?v=4" fontSize='small' />
-                    <p> {listing.creator.name} </p>
-                    { listing.creator.isVerified &&  <CheckCircleIcon color="success" fontSize='small' />}
+                    <p> Mary G. </p>
+                    { true &&  <CheckCircleIcon color="success" fontSize='small' />}
                 </div>
 
                 <div className={styles.card_user} >

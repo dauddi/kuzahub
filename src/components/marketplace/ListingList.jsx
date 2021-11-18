@@ -1,12 +1,36 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styles from "./listinglist.module.scss"
-import listings from '../../../listings.json'
+import Loader from '../common/Loader'
+// import listings from '../../../listings.json'
 import ListingCard from './ListingCard'
+import useSWR from 'swr'
+import {getSession} from 'next-auth/react'
 
-const ListingList = () => {
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+const ListingList = (props) => {
+    const {data, error} = useSWR('/api/listings', fetcher)
+    const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+        if (data) {
+            const {posts} = data;
+            console.log(posts);
+
+            props.home ? posts = posts.slice(0, 6) : posts = posts
+            setPosts(posts);
+        }
+    }, [data, props.home])
+
+    if (error) {
+        return <div>TempError! Please wait...</div> ;
+    }
+
+    if (!data) return <div>Loading...</div>
+
     return (
         <div className={styles.listings}>
-            { listings.map(listing => <ListingCard listing={listing} key={listing.id} /> ) }
+            { posts.map(post => <ListingCard listing={post} key={post.id} /> ) }
         </div>
     )
 }
