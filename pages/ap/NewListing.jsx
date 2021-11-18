@@ -5,8 +5,13 @@ import { Button, Divider, TextField, MenuItem } from '@material-ui/core'
 import CampaignBanner from '../../src/components/common/CampaignBanner'
 import Router from 'next/router'
 
+import {useSession} from 'next-auth/react'
+
 const NewListing = () => {
     const categories = ["catering", 'automibile', 'tech', 'apparel and textile'];
+
+    const { data: session } = useSession();
+    console.log(session)
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -14,18 +19,23 @@ const NewListing = () => {
         const data = new FormData(event.currentTarget);
 
         const res = await fetch("/api/listings/new", {
-            method: "POST", 
+            method: "POST",
+            user: JSON.stringify(session.user),
             body: JSON.stringify({
-              title: data.get('title'),
-              desc: data.get('desc'),
-              location: data.get('location'),
-              category: data.get('category'),
+                title: data.get('title'),
+                desc: data.get('desc'),
+                location: data.get('location'),
+                category: data.get('category'),
             }),
           })
+
+          console.log(res);
           
           if (res.status === 200) {
+              alert('post added successfully!!')
             Router.push('/')
           } else {
+            alert('post creation failed. Try again later!!')
             Router.push('/ap/NewListing')
           }
     }
