@@ -20,7 +20,7 @@ export default async function auth(req, res) {
     ],
 
     adapter: MongoDBAdapter({
-      db: (await clientPromise).db("kuzahub"),
+      db: (await clientPromise).db("kuzaDB"),
     }),
 
     // https://next-auth.js.org/configuration/databases
@@ -93,7 +93,7 @@ export default async function auth(req, res) {
 
     // You can set the theme to 'light', 'dark' or use 'auto' to default to the
     // whatever prefers-color-scheme is set to in the browser. Default is 'auto'
-    theme: "light",
+    theme: "auto",
 
     // Enable debug messages in the console if you are having problems
     debug: false,
