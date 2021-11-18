@@ -1,3 +1,7 @@
+$bannerH1Large: 18px;
+$bannerH1Medium: 16px;
+$bannerH1Small:14px;
+
 .banner {
   display: flex;
   width: 80%;
@@ -14,7 +18,7 @@
 
   .banner_text {
     text-align: left;
-    font-size: 18px;
+    font-size: $bannerH1Large;
     flex: 1;
   }
 
@@ -30,6 +34,31 @@
       align-items: center;
       gap: 0.2em;
       cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    width: 100%;
+    .banner_text {
+      font-size: $bannerH1Medium;
+    }
+  }
+}
+
+@media (max-width: 568px) {
+  .banner {
+    width: 100%;
+    margin: auto 0;
+    margin-top: 6em;
+    padding-left: 1em;
+    flex-direction: column;
+    .banner_img {
+      display: none;
+    }
+    .banner_text {
+      font-size: $bannerH1Small;
     }
   }
 }

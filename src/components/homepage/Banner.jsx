@@ -21,9 +21,9 @@ const Banner = () => {
     return (
         <div className={styles.banner}>
             <div className={styles.banner_text}>
-                <h1> Enhance Your Business Online Presense For Free </h1>
+                <h1> Enhance Your Business Online Presence Today </h1>
 
-                <h5> Increase Revenue | Build Networks | No Extra Cost </h5>
+                <p> Increase Revenue | Build Networks | No Extra Cost </p>
 
                 <div className={styles.cta} >
                     <ButtonPrimary clickHandler={handleCreateListing} title="Create a Listing" />
@@ -31,7 +31,7 @@ const Banner = () => {
                     <Divider variant="middle" orientation="vertical" />
 
                     <div className={styles.cta_video}>
-                        <h6> How it Works </h6>
+                        <h5> How it Works </h5>
                         <span> <PlayCircleOutlineIcon fontSize="large" color="primary" /> </span>
                     </div>
                 </div>
