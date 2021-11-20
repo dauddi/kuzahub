@@ -15,7 +15,7 @@ const postSchema = new mongoose.Schema({
     type: String,
   },
   creationDate: { type: Number },
-  owner: [],
+  owner: {},
   ratings: [{}],
 });
 

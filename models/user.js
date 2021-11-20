@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
   },
   join_time: { type: Number },
   total_posts: { type: Number },
-  posts: [{}],
+  posts: [],
   ratings: [{}],
 });
 
