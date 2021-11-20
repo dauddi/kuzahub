@@ -2,17 +2,11 @@ import React, {useState, useEffect} from 'react';
 import styles from './navbar.module.scss'
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
-import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
-import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import ChatIcon from '@material-ui/icons/Chat';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Avatar from '@mui/material/Avatar';
 import Image from 'next/image'
-import { useSelector, useDispatch } from 'react-redux'
-import { authenticate } from '../../features/Auth/authSlice'
 import Link from 'next/link'
-import PersonPinIcon from '@mui/icons-material/PersonPin';
-import ButtonPrimary from './ButtonPrimary'
 import Badge from '@mui/material/Badge';
 import { Divider } from '@material-ui/core';
 import Router from 'next/router'
@@ -23,14 +17,13 @@ import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 
 import { useSession } from 'next-auth/react'
 import {signIn, signOut} from 'next-auth/react'
-import { SignalWifiConnectedNoInternet4 } from '@mui/icons-material';
 
 function Navbar() {
     const [menuClicked, setMenuClicked] = useState(false)
     const { data: session, status } = useSession();
     const { user } = session ? session : {};
 
-    console.log(session, status)
+    // console.log(session, status)
 
     useEffect(() => {
         

@@ -8,6 +8,7 @@ import { Divider } from '@mui/material';
 import Link from 'next/link';
 
 const ListingCard = ({listing}) => {
+    const user = listing.owner[0];
 
     const getTimeUpdate = () => {
         const now = Date.now();
@@ -43,9 +44,9 @@ const ListingCard = ({listing}) => {
                 <p>{listing.desc}</p>
 
                 <div className={styles.card_user}>
-                    <Avatar src="https://avatars.githubusercontent.com/u/15913767?v=4" fontSize='small' />
-                    <p> Mary G. </p>
-                    { true &&  <CheckCircleIcon color="success" fontSize='small' />}
+                    <Avatar src={user.image} fontSize='small' />
+                    <p> {user.name} </p>
+                    { !user.emailVerified &&  <CheckCircleIcon color="success" fontSize='small' />}
                 </div>
 
                 <div className={styles.card_user} >

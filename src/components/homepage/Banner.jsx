@@ -3,18 +3,21 @@ import styles from './banner.module.scss'
 import Image from 'next/image'
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import Divider from '@mui/material/Divider';
-import ButtonPrimary from '../common/ButtonPrimary';
-import {useSelector} from 'react-redux'
 import Router from 'next/router'
+import { Button } from '@mui/material';
+import { useSession } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 
 const Banner = () => {
-    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
 
-    const handleCreateListing = () => {
-        if (isAuthenticated) {
+    const {data: session, status} = useSession();
+
+    const handleCreateListing = (e) => {
+        e.preventDefault();
+        if (session && status === 'authenticated') {
             Router.push('/ap/NewListing')
         } else {
-            Router.push('/nu/register')
+            signIn();
         }
     }
 
@@ -26,7 +29,7 @@ const Banner = () => {
                 <p> Increase Revenue | Build Networks | No Extra Cost </p>
 
                 <div className={styles.cta} >
-                    <ButtonPrimary clickHandler={handleCreateListing} title="Create a Listing" />
+                    <Button color="warning" onClick={e => handleCreateListing(e)} variant="contained">Create Listing</Button>
 
                     <Divider variant="middle" orientation="vertical" />
 
