@@ -9,9 +9,8 @@ import {useSession} from 'next-auth/react'
 
 const NewListing = () => {
     const categories = ["catering", 'automibile', 'tech', 'apparel and textile'];
-
     const { data: session } = useSession();
-    console.log(session)
+    const { user } = session;
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -20,8 +19,8 @@ const NewListing = () => {
 
         const res = await fetch("/api/listings/new", {
             method: "POST",
-            user: JSON.stringify(session.user),
             body: JSON.stringify({
+                user: user,
                 title: data.get('title'),
                 desc: data.get('desc'),
                 location: data.get('location'),
