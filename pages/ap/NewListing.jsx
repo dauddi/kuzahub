@@ -10,7 +10,7 @@ import {useSession} from 'next-auth/react'
 const NewListing = () => {
     const categories = ["catering", 'automibile', 'tech', 'apparel and textile'];
     const { data: session } = useSession();
-    const { user } = session;
+    const { user } = session ? session : {};
 
     const handleSubmit = async (event) => {
         event.preventDefault();
