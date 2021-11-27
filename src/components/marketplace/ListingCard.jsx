@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './listingcard.module.scss'
-import Image from 'next/image'
 import Avatar from '@mui/material/Avatar';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import StarIcon from '@mui/icons-material/Star';
@@ -34,42 +33,42 @@ const ListingCard = ({listing}) => {
 
     return user && (
         <Link href={`/listings/listingID`} passHref>
-        <div className={styles.container} >
-            <div className={styles.card_text}>
-                <h3> {listing.title} </h3>
-                 
-                <div className={styles.card_small}>
-                    <small> {listing.location} </small>
-                    <small> {`Posted: ${getTimeUpdate()}`} </small>
+            <div className={styles.container} >
+                <div className={styles.card_text}>
+                    <h3> {listing.title} </h3>
+                    
+                    <div className={styles.card_small}>
+                        <small> {listing.location} </small>
+                        <small> {`Posted: ${getTimeUpdate()}`} </small>
+                    </div>
+                    
+                    <p>{listing.desc}</p>
+
+                    <div className={styles.card_user}>
+                        <Avatar src={user.image} fontSize='small' />
+                        <p> {user.name} </p>
+                        { !user.emailVerified &&  <CheckCircleIcon color="success" fontSize='small' />}
+                    </div>
+
+                    <div className={styles.card_user} >
+                        <p>Ratings:</p>
+
+                        <span>
+                            <StarIcon fontSize="small" color="warning"/>
+                            <StarIcon fontSize="small" color="warning" />
+                            <StarIcon fontSize="small" color="warning" />
+                            <StarIcon fontSize="small" color="warning" />
+                            <StarIcon fontSize="small" color="warning" />
+                        </span>
+                        
+                        <small>({listing.ratings.length})</small>
+
+                    </div>
                 </div>
                 
-                <p>{listing.desc}</p>
+                <Divider/>
 
-                <div className={styles.card_user}>
-                    <Avatar src={user.image} fontSize='small' />
-                    <p> {user.name} </p>
-                    { !user.emailVerified &&  <CheckCircleIcon color="success" fontSize='small' />}
-                </div>
-
-                <div className={styles.card_user} >
-                    <p>Ratings:</p>
-
-                    <span>
-                        <StarIcon fontSize="small" color="warning"/>
-                        <StarIcon fontSize="small" color="warning" />
-                        <StarIcon fontSize="small" color="warning" />
-                        <StarIcon fontSize="small" color="warning" />
-                        <StarIcon fontSize="small" color="warning" />
-                    </span>
-                    
-                    <small>({listing.ratings.length})</small>
-
-                </div>
             </div>
-             
-             <Divider/>
-
-        </div>
         </Link>
     )
 }

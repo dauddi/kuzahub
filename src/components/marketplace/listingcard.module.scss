@@ -1,12 +1,11 @@
 .container {
   display: flex;
-  width: 30em;
+  width: 60vw;
   flex-direction: column;
   border-radius: 1em;
 
   &:hover {
     cursor: pointer;
-    width: 30.1em;
     transition-delay: 50ms;
 
     h3 {
