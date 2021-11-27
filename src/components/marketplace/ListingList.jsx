@@ -1,36 +1,33 @@
-import React, {useState, useEffect} from 'react'
-import styles from "./listinglist.module.scss"
-import Loader from '../common/Loader'
-// import listings from '../../../listings.json'
-import ListingCard from './ListingCard'
-import useSWR from 'swr'
-import { getSession } from 'next-auth/react'
+import React, {useState, useEffect} from 'react';
+import styles from "./listinglist.module.scss";
+import Loader from '../common/Loader';
+import ListingCard from './ListingCard';
+import useSWR from 'swr';
+import { getSession } from 'next-auth/react';
 
-const fetcher = (url) => fetch(url).then((res) => res.json())
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
-const ListingList = (props) => {
-    const { data, error } = useSWR('/api/listings/all', fetcher)
+const ListingList = ({ home }) => {
     const [posts, setPosts] = useState([])
+    const { data, error } = useSWR('/api/listings/all', fetcher)
 
     useEffect(() => {
         if (data) {
             const { posts } = data;
 
-            props.home ? posts = posts.slice(0, 6) : posts = posts
-            setPosts(posts);
+            (home && posts.length > 4) ? setPosts(posts.slice(0, 4)) : setPosts(posts);
         }
-    }, [data, props.home])
-
-    if (error) {
-        return <div>TempError! Please wait...</div> ;
-    }
+    }, [home, data] )
 
     if (!data) return <div>Loading...</div>
 
-    return data && (
-        <div className={ styles.listings }>
-            { posts.map(post => <ListingCard listing={post} key={post.id} /> ) }
+    return (
+        <div className={ styles.container }>
+            <div className={ styles.listings }>
+                { posts.map(post => <ListingCard listing={post} key={post.id} /> ) }
+            </div>
         </div>
+
     )
 }
 
