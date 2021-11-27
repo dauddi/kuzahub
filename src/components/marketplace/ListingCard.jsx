@@ -30,7 +30,9 @@ const ListingCard = ({listing}) => {
             }
     }
 
-    return (
+    if (!user) return "";
+
+    return user && (
         <Link href={`/listings/listingID`} passHref>
         <div className={styles.container} >
             <div className={styles.card_text}>

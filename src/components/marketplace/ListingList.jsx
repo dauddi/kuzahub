@@ -6,7 +6,7 @@ import ListingCard from './ListingCard'
 import useSWR from 'swr'
 import { getSession } from 'next-auth/react'
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const fetcher = (url) => fetch(url).then((res) => res.json())
 
 const ListingList = (props) => {
     const { data, error } = useSWR('/api/listings/all', fetcher)
@@ -14,7 +14,7 @@ const ListingList = (props) => {
 
     useEffect(() => {
         if (data) {
-            const {posts} = data;
+            const { posts } = data;
 
             props.home ? posts = posts.slice(0, 6) : posts = posts
             setPosts(posts);
@@ -27,7 +27,7 @@ const ListingList = (props) => {
 
     if (!data) return <div>Loading...</div>
 
-    return (
+    return data && (
         <div className={ styles.listings }>
             { posts.map(post => <ListingCard listing={post} key={post.id} /> ) }
         </div>
