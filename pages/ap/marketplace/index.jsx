@@ -15,7 +15,7 @@ const Marketplace = () => {
 
 					<main className={styles.main}>
 						<h1>Feed</h1>
-						<ListingList />
+						<ListingList home={false} />
 					</main>
 				</section>
 			</div>
