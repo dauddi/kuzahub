@@ -10,18 +10,18 @@ const Homepage = () => {
 	return (
         <Layout home={true}>
             <Head>
-				<title>TuzaHub</title>
+				<title>kuzaHub</title>
 			</Head>
 
             <div className={styles.container} >
 
-                <header className={styles.header} >
+                <header>
                     <Banner />
                 </header>
 
                 <main className={styles.main}>
                     <section className={styles.preview} >
-                        <PreviewListings />
+                        <PreviewListings home={true} />
                     </section>
                 </main>
                 
