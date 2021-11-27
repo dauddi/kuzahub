@@ -34,24 +34,25 @@ function Navbar() {
             <div className={styles.header}>
                 <div className={styles.header__left}>
                     <Link href="/" passHref >
-                        <Image className="logo" priority src="/images/logo.png" width={160} height={43.4} alt="tuzahub logo" />
+                        {/* <Image className="logo" priority src="/images/logo.png" width={160} height={43.4} alt="tuzahub logo" /> */}
+
+                        <h1>kuzaHub</h1>
                     </Link>
                     
-                    <div className={styles.header__search}>
+                    {/* <div className={styles.header__search}>
                         <SearchIcon fontSize="small" />
                         <input type="text" />
-                    </div>
+                    </div> */}
                 </div>
 
                 {(session && status === 'authenticated') && <div className={styles.header__right}>
-                    <Link href="/" passHref>
-                        <HomeIcon />
+                    <Link href="/ap/marketplace" passHref>
+                        <a> Marketplace </a>
                     </Link>
-                    
 
-                    <Badge badgeContent={2} color="warning" >
+                    {/* <Badge badgeContent={2} color="warning" >
                         <NotificationsIcon />
-                    </Badge>
+                    </Badge> */}
 
                     <div>
                     
@@ -83,6 +84,13 @@ function Navbar() {
                             <div className={styles.dropitems}>
                                 <FeaturedPlayListOutlinedIcon fontSize="small" />
                                 <p>My Listings</p>
+                            </div>
+                        </Link>
+
+                        <Link href='#' passHref>
+                            <div className={styles.dropitems}>
+                                <PeopleAltOutlinedIcon fontSize="small" />
+                                <p>Notifications</p>
                             </div>
                         </Link>
 
