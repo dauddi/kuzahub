@@ -1,12 +1,9 @@
 import React from 'react'
 import styles from './banner.module.scss'
-import Image from 'next/image'
-import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
-import Divider from '@mui/material/Divider';
 import Router from 'next/router'
-import { Button } from '@mui/material';
 import { useSession } from 'next-auth/react'
 import { signIn } from 'next-auth/react'
+import Link from 'next/link'
 
 const Banner = () => {
 
@@ -24,23 +21,11 @@ const Banner = () => {
     return (
         <div className={styles.banner}>
             <div className={styles.banner_text}>
-                <h1> Enhance Your Business Online Presence Today </h1>
+                <h1> Connecting Businesses & Solopreneurs to Top Suppliers </h1>
 
-                <p> Increase Revenue | Build Networks | No Extra Cost </p>
+                <p> Are you a Supplier? <span><a onClick={handleCreateListing}> Create a Listing </a></span> </p>
 
-                <div className={styles.cta} >
-                    <Button color="warning" onClick={e => handleCreateListing(e)} variant="contained">Create Listing</Button>
-
-                    <Divider variant="middle" orientation="vertical" />
-
-                    <div className={styles.cta_video}>
-                        <h5> How it Works </h5>
-                        <span> <PlayCircleOutlineIcon fontSize="large" color="primary" /> </span>
-                    </div>
-                </div>
-            </div>
-            <div className={styles.banner_img}>
-                <Image src="/images/banner.jpg" width={400} height={303} alt="banner"/>
+                <input type="text" placeholder="Find Suppliers" name="searchInput" />
             </div>
         </div>
     )
