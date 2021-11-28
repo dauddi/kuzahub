@@ -4,9 +4,11 @@ import styles from './login.module.scss'
 import {Divider} from '@mui/material'
 import GoogleIcon from '@mui/icons-material/Google';
 import EmailIcon from '@mui/icons-material/Email';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import {signIn, signOut} from 'next-auth/react'
 import { useSession } from 'next-auth/react'
 import Router from 'next/router'
+
 
 const Login = () => {
     const {data: session} = useSession();
@@ -36,7 +38,12 @@ const Login = () => {
                     <input type="email" placeholder="email address" name='username' />
                 </div>
 
-                <a className={styles.submit} type="submit" > Continue with Email </a>
+                <div className={styles.email}>
+                    <VpnKeyIcon />
+                    <input type="password" placeholder="password" name='password' />
+                </div>
+
+                <a className={styles.submit} type="submit" > Log In </a>
 
                 <Divider>or</Divider>
 

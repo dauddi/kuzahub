@@ -63,6 +63,22 @@
     }
 }
 
+.fullname {
+    display: flex;
+    width: 60%;
+    gap: 1.25rem;
+
+    & > * {
+        padding: .8rem;
+        border: .5px lightgray solid;
+        border-radius: 5px;
+        outline: none;
+        font-size: 1.10rem;
+        width: 70%;
+        color: rgb(0, 41, 0);
+    }
+}
+
 .email {
     display: flex;
     align-items: center;

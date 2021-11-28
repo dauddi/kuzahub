@@ -4,13 +4,13 @@ import styles from './register.module.scss'
 import {Divider} from '@mui/material'
 import GoogleIcon from '@mui/icons-material/Google';
 import EmailIcon from '@mui/icons-material/Email';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import {signIn, signOut} from 'next-auth/react'
 import {useSession} from 'next-auth/react'
 import Router from 'next/router'
 
 const Register = () => {
     const [enteredEmail, setEnteredEmail] = useState("");
-    const [isSubmitting, setIsSubmitting] = useState(false)
     const { data: session } = useSession();
 
     useEffect(() => {
@@ -24,13 +24,6 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const res = signIn('email', { email: enteredEmail })
-        if (!res.value) {
-            setIsSubmitting(true)
-        } else {
-            setIsSubmitting(false)
-        }
-        setEnteredEmail("");
     }
 
     return (
@@ -52,7 +45,7 @@ const Register = () => {
                 <Link href="/api/auth/google" passHref>
                     <div className={styles.google}>
                         <GoogleIcon />
-                        <a disabled={isSubmitting} onClick={ (e) => {
+                        <a onClick={ (e) => {
                             e.preventDefault();
                             signIn('google');
                         }}>Continue With Google</a>
@@ -61,13 +54,24 @@ const Register = () => {
 
                 <Divider>or</Divider>
 
+                <div className={styles.fullname}>
+                    <input className={styles.name} type="text" name="firstname" placeholder="first name" />
+
+                    <input className={styles.name} type="text" name="lastname" placeholder="last name" />
+                </div>
+
                 <div className={styles.email}>
                     <EmailIcon />
                     <input type="email" placeholder="email address" name='username' onChange={ handleChange } value={ enteredEmail } />
                 </div>
 
+                <div className={styles.email}>
+                    <VpnKeyIcon />
+                    <input type="password" placeholder="new password" name='password' onChange={ handleChange } />
+                </div>
+
                 <Link href='/api/auth/signin' >
-                    <a className={styles.submit} style={{backgroundColor: `${isSubmitting ? 'grey' : 'green'}`}} onClick={ handleSubmit } disabled={isSubmitting} type="submit" > Continue with Email </a>
+                    <a className={styles.submit} onClick={ handleSubmit } type="submit" > Create Account </a>
                 </Link>
 
                 <Divider />
