@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import styles from './login.module.scss'
 import {Divider} from '@mui/material'
 import GoogleIcon from '@mui/icons-material/Google';
 import EmailIcon from '@mui/icons-material/Email';
 import {signIn, signOut} from 'next-auth/react'
+import { useSession } from 'next-auth/react'
+import Router from 'next/router'
 
-const register = () => {
+const Login = () => {
+    const {data: session} = useSession();
+
+    useEffect(() => {
+        if (session) Router.push('/')
+    })
+
     return (
         <div className={styles.container}>
             <nav className={styles.nav}>
@@ -30,13 +38,15 @@ const register = () => {
 
                 <a className={styles.submit} type="submit" > Continue with Email </a>
 
-
                 <Divider>or</Divider>
 
-                <Link href="/" passHref>
+                <Link href="/api/auth/google" passHref>
                   <div className={styles.google}>
                       <GoogleIcon />
-                      <a>Continue With Google</a>
+                      <a onClick={(e) => {
+                          e.preventDefault();
+                          signIn('google')
+                      }} >Continue With Google</a>
                   </div>
                 </Link>
 
@@ -58,4 +68,4 @@ const register = () => {
     )
 }
 
-export default register
+export default Login;

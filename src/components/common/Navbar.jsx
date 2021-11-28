@@ -101,7 +101,7 @@ function Navbar() {
 
                             <Link onClick={(e) => {
                                 e.preventDefault();
-                                signOut();
+                                signOut({ callbackUrl: 'http://localhost:3000' });
                             }} href='/api/auth/signout' passHref>
                                 <div className={styles.dropitems}>
                                     <ExitToAppOutlinedIcon fontSize="small" />

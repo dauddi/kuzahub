@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import styles from "./listinglist.module.scss";
-import Loader from '../common/Loader';
 import ListingCard from './ListingCard';
 import useSWR from 'swr';
 import { getSession } from 'next-auth/react';
@@ -14,10 +13,10 @@ const ListingList = ({ home }) => {
     useEffect(() => {
         if (data) {
             const { posts } = data;
-
-            (home && posts.length > 4) ? setPosts(posts.slice(0, 4)) : setPosts(posts);
+            setPosts(posts);
+        //     (home && posts.length > 4) ? setPosts(posts.slice(0, 4)) : setPosts(posts);
         }
-    }, [home, data] )
+    }, [data] )
 
     if (!data) return <div>Loading...</div>
 

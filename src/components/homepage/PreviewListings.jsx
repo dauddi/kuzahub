@@ -10,7 +10,7 @@ const PreviewListings = () => {
             <ListingList home={true} />
 
             <Link passHref href='/ap/marketplace' >
-                <h4>See More</h4>
+                <h4>Marketplace &rarr;</h4>
             </Link>
         </div>
     )
