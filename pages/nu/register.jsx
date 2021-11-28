@@ -1,12 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import styles from './register.module.scss'
 import {Divider} from '@mui/material'
 import GoogleIcon from '@mui/icons-material/Google';
 import EmailIcon from '@mui/icons-material/Email';
 import {signIn, signOut} from 'next-auth/react'
+import {useSession} from 'next-auth/react'
+import Router from 'next/router'
 
-const register = () => {
+const Register = () => {
+    const [enteredEmail, setEnteredEmail] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const { data: session } = useSession();
+
+    useEffect(() => {
+        if (session) Router.push('/')
+    }, [session])
+
+    const handleChange = (e) => {
+        setEnteredEmail(e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const res = signIn('email', { email: enteredEmail })
+        if (!res.value) {
+            setIsSubmitting(true)
+        } else {
+            setIsSubmitting(false)
+        }
+        setEnteredEmail("");
+    }
+
     return (
         <div className={styles.container}>
             <nav className={styles.nav}>
@@ -23,10 +49,10 @@ const register = () => {
 
                 <Divider />
 
-                <Link href="/api/auth/signin" passHref>
+                <Link href="/api/auth/google" passHref>
                     <div className={styles.google}>
                         <GoogleIcon />
-                        <a onClick={ (e) => {
+                        <a disabled={isSubmitting} onClick={ (e) => {
                             e.preventDefault();
                             signIn('google');
                         }}>Continue With Google</a>
@@ -37,10 +63,12 @@ const register = () => {
 
                 <div className={styles.email}>
                     <EmailIcon />
-                    <input type="email" placeholder="email address" name='username' />
+                    <input type="email" placeholder="email address" name='username' onChange={ handleChange } value={ enteredEmail } />
                 </div>
 
-                <a className={styles.submit} type="submit" > Continue with Email </a>
+                <Link href='/api/auth/signin' >
+                    <a className={styles.submit} style={{backgroundColor: `${isSubmitting ? 'grey' : 'green'}`}} onClick={ handleSubmit } disabled={isSubmitting} type="submit" > Continue with Email </a>
+                </Link>
 
                 <Divider />
 
@@ -60,4 +88,4 @@ const register = () => {
     )
 }
 
-export default register
+export default Register;
