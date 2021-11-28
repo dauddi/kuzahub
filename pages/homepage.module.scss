@@ -27,14 +27,15 @@
   }
 
   h4 {
-    text-align: right;
+    text-align: center;
     cursor: pointer;
     font-size: 13px;
+    color: #fff;
 
     &:hover {
-      text-align: right;
+      text-align: center;
       cursor: pointer;
-      color: #023852;
+      color: rgb(209, 236, 209);
     }
   }
 }

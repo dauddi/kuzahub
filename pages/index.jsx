@@ -21,7 +21,7 @@ const Homepage = () => {
 
                 <main className={styles.main}>
                     <section className={styles.preview} >
-                        <PreviewListings home={true} />
+                        <PreviewListings />
                     </section>
                 </main>
                 
